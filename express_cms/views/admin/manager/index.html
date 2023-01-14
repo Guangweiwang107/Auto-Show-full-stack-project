@@ -1,0 +1,53 @@
+<%- include ("../public/page_header.html")%>
+    <div class="panel panel-default">
+
+        <!--
+        列表展示
+    -->
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="th">
+                        <th>管理员名称</th>
+                        <th>管理员电话</th>
+                        <th>管理员邮箱</th>
+
+                        <th class="text-center">状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% for(var i=0;i<list.length;i++){ %>
+                        <tr>
+                            <td>
+                                <%=list[i].username%>
+                            </td>
+                            <td>
+                                <%=list[i].mobile%>
+                            </td>
+                            <td>
+                                <%=list[i].email%>
+                            </td>
+                            <td class="text-center">
+                                <%if(list[i].status==1){%>
+                                    <img src="/admin/images/yes.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                        data-model="Manager" data-field="status" />
+
+                                    <%}else{%>
+                                        <img src="/admin/images/no.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                            data-model="Manager" data-field="status" />
+                                        <%}%>
+                            </td>
+                            <td class="text-center"><a
+                                    href="/<%=adminPath%>/manager/edit?id=<%=list[i]._id%>">修改</a>　　<a class="delete"
+                                    href="/<%=adminPath%>/manager/delete?id=<%=list[i]._id%>">删除</a></td>
+                        </tr>
+                        <%}%>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>

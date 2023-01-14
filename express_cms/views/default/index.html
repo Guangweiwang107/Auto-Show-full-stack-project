@@ -1,0 +1,232 @@
+<%- include("./public/page_header.html")%>
+
+	<link rel="stylesheet" href="/default/style/style.css">
+	<link rel="stylesheet" type="text/css" href="/default/style/swiper.min.css" />
+
+	<body id="ios">
+		<%- include("./public/page_nav.html")%>
+			<div id="fh5co-press" data-section="press">
+
+				<!--轮播图-->
+				<div id="banner-wrapper">
+
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<%for(var i=0;i<focusList.length;i++){%>
+								<div class="swiper-slide">
+									<a href="<%=focusList[i].link%>" target="_blank">
+										<img src="/<%=focusList[i].focus_img%>" alt="<%=focusList[i].title%>" />
+									</a>
+								</div>
+								<%}%>
+
+						</div>
+						<div class="swiper-pagination"></div>
+
+						<div class="swiper-button-prev swiper-button-white"></div>
+						<div class="swiper-button-next swiper-button-white"></div>
+
+					</div>
+
+				</div>
+
+				<!--关于-->
+
+				<div data-anchor="about" class="section page3 noql fp-section active">
+					<div class="wrapper">
+						<div class="head">
+							<div class="img">
+								<img src="/default/images/img21.png">
+							</div>
+
+						</div>
+						<div class="body">
+							<ul>
+
+								<li>
+									<a href="autochina2022/index.php?s=articles_150.html" target="_blank">
+										<div class="img">
+											<img style="height: auto; border-radius: 3px; width: 100%;"
+												src="/default/images/intro_1458974456393_imgg.jpg">
+										</div>
+										<div class="brand">
+											<table>
+												<tbody>
+													<tr>
+														<td><img src="/default/images/dark.png"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="autochina2022/index.php?s=articles_149.html" target="_blank">
+										<div class="img">
+											<img style="height: auto; border-radius: 3px; width: 100%;"
+												src="/default/images/intro_1452859512140_09c.jpg">
+										</div>
+										<div class="brand">
+											<table>
+												<tbody>
+													<tr>
+														<td><img src="/default/images/zd.png"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!--展会新闻-->
+				<div data-anchor="cases" style="" class="section page4 noql fp-section active">
+					<div class="wrapper">
+						<div class="head">
+							<div class="img">
+								<img src="/default/images/img25.png">
+							</div>
+							<div class="nav">
+								<ul>
+
+									<li>
+										<a href="autochina2022/index.php?s=/lists_14.html"><img
+												src="/default/images/img27.png"></a>
+									</li>
+								</ul>
+							</div>
+							<div class="list">
+								<dl id="dl1">
+									<dt>展会新闻</dt>
+									<% for(var i=0;i<topNewsList.length;i++){%>
+										<dd>
+											<a href="content_<%=topNewsList[i]._id%>.html">0<%=i+1%><span>/</span>
+													<%=topNewsList[i].title%></a>
+										</dd>
+										<%}%>
+
+								</dl>
+
+							</div>
+						</div>
+						<div class="body">
+							<ul class="list">
+
+								<%for( var i=0;i<bestNewsList.length;i++){%>
+									<li>
+										<a href="content_<%=bestNewsList[i]._id%>.html">
+											<div class="view">
+												<div class="date">
+													<big>
+														<%=unixToDay(bestNewsList[i].add_time)%>
+													</big><span>
+														<%=unixToYearAndMonth(bestNewsList[i].add_time)%>
+													</span>
+												</div>
+												<div class="img">
+													<table>
+														<tbody>
+															<tr>
+																<td><img src="/<%=bestNewsList[i].article_img%>">
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<h4>
+													<%=bestNewsList[i].title%>
+												</h4>
+											</div>
+											<div class="mask" style="background: #0068b7 none repeat scroll 0 0;">
+
+												<h2>
+													<%=bestNewsList[i].title%>
+												</h2>
+												<hr>
+												<p>
+													<%=bestNewsList[i].description%>
+												</p>
+											</div>
+										</a>
+									</li>
+									<%}%>
+
+
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!--服务-->
+				<div class="section page5 noql fp-section active">
+					<div class="wrapper">
+						<div class="img-wrap">
+							<div class="img1">
+								<img src="/default/images/img51.png">
+							</div>
+							<div class="img2">
+								<img src="/default/images/img52.png">
+							</div>
+							<div class="img3">
+								<img src="/default/images/img53.png">
+							</div>
+							<div class="img4">
+								<img src="/default/images/img54.png">
+							</div>
+						</div>
+						<div class="text">
+							<h2>展会概况</h2>
+							<p>2022（第十六届）北京国际汽车展览会（Auto China 2022）将在北京中国国际展览中心新馆和中国国际展览中心老馆举行。<br>
+							</p>
+
+							<p>整车馆：2022年9月26日-10月5日<br> 中国国际展览中心（天竺）新馆
+								<br> 北京市顺义区裕翔路88号
+							</p>
+
+							<p>零部件及新能源馆：<br> 2022年9月28日-9月30日
+								<br> 展览地点：中国国际展览中心（静安庄）
+								<br> 北京市朝阳区北三环东路6号
+							</p>
+
+						</div>
+						<div class="nav">
+							<ul>
+								<li>
+									<a href="#"><img src="/default/images/img34.png"></a>
+								</li>
+								<li>
+									<a href="overview.html"><img src="/default/images/img35.png"></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<%- include("./public/page_footer.html")%>
+				<script type="text/javascript" src="/default/js/jquery.min.js"></script>
+				<script type="text/javascript" src="/default/js/bootstrap.min.js"></script>
+				<script type="text/javascript" src="/default/js/swiper.min.js"></script>
+
+				<script>
+					var mySwiper = new Swiper('.swiper-container', {
+						autoplay: true,
+						loop: true,
+						pagination: {
+							el: '.swiper-pagination',
+						},
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev',
+						}
+
+					})
+				</script>
+	</body>
+
+	</html>

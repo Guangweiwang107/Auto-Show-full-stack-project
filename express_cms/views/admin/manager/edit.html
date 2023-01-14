@@ -1,0 +1,51 @@
+<%- include ("../public/page_header.html") %>
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            修改管理员
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive input-form">
+                <form action="/<%=adminPath%>/manager/doEdit" method="post" id="form">
+
+                    <input type="hidden" name="id" id="id" value="<%=list._id%>" />
+                    <ul>
+                        <li> <span>管理员名称:</span><input type="text" name="username" id="username" readonly
+                                value="<%=list.username%>" /></li>
+
+                        <li> <span>管理员密码:</span> <input type="password" name="password" id="password" /> <i>说明：如果密码为空
+                                表示不修改管理员密码</i></li>
+                        <li> <span>确认密码:</span> <input type="password" name="rpassword" id="rpassword" /></li>
+                        <li> <span>管理员电话:</span> <input type="text" name="mobile" id="mobile"
+                                value="<%=list.mobile%>" /></li>
+                        <li> <span>管理员邮箱:</span> <input type="text" name="email" id="email" value="<%=list.email%>" />
+                        </li>
+
+                        <li> <span>状　　态:</span>
+                            <input type="radio" name="status" <% if (list.status==1){%> checked <%}%> value="1" id="a"
+                                /> <label for="a">显示</label>
+                                <input type="radio" name="status" <% if (list.status==0){%> checked <%}%> value="0"
+                                    id="b" /><label for="b">隐藏</label>
+                        </li>
+                        <li>
+                            <div class="error"> </div>
+                            <br />
+                            <button type="submit" class="btn btn-default">提交</button>
+                        </li>
+
+
+                    </ul>
+
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    </body>
+
+    </html>

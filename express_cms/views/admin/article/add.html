@@ -1,0 +1,113 @@
+<%- include ("../public/page_header.html") %>
+
+    <script type="text/javascript" src="/admin/bootstrap/js/bootstrap.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
+        type="text/css" />
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+
+    <script type="text/javascript" src="/wysiwyg-editor/js/languages/zh_cn.js"></script>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            增加内容
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive input-form articel_content">
+                <form action="/<%=adminPath%>/article/doAdd" method="post" enctype="multipart/form-data">
+
+                    <ul id="myTab" class="nav nav-tabs">
+
+                        <li class="active">
+                            <a href="#index" data-toggle="tab">基本设置</a>
+                        </li>
+                        <li>
+                            <a href="#info" data-toggle="tab">
+                                内容详情
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#seo" data-toggle="tab">
+                                Seo设置
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+
+                        <div class="tab-pane fade  in active" id="index">
+                            <ul>
+
+                                <li>
+                                    <span>所属分类: </span>
+                                    <select name="cid" id="cid">
+
+                                        <%for(var i=0;i<articleCate.length;i++){%>
+                                            <option value="<%=articleCate[i]._id%>">
+                                                <%=articleCate[i].title%>
+                                            </option>
+                                            <%for(var j=0;j<articleCate[i].items.length;j++){%>
+                                                <option value="<%=articleCate[i].items[j]._id%>">　--
+                                                    <%=articleCate[i].items[j].title%>
+                                                </option>
+                                                <%}%>
+                                                    <%}%>
+
+                                    </select>
+                                </li>
+                                <li> <span>内容标题: </span> <input type="text" name="title" class="title" /></li>
+
+                                <li> <span>跳转地址: </span> <input type="text" name="link" /> <i>说明：不为空点击文章将跳转到此地址</i></li>
+
+                                <li> <span>封面图:</span> <input type="file" name="article_img" /></li>
+                                <li> <span>作　　者: </span> <input type="text" name="author" /></li>
+                                <li> <span>排　　序: </span> <input type="text" name="sort" value="1000" /></li>
+                                <li> <span>状　　态: </span> <input type="radio" name="status" checked value="1" id="a" />
+                                    <label for="a">显示</label> <input type="radio" name="status" value="0"
+                                        id="b" /><label for="b">隐藏</label> 　
+                                </li>
+
+                                <li> <span>加入推荐:</span>　
+                                    <input type="checkbox" value="1" name="is_best" /> 精品
+                                    <input type="checkbox" value="1" name="is_hot" /> 热门
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="info">
+                            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="tab-pane fade" id="seo">
+                            <ul>
+                                <li> <span>关键词: </span> <input type="text" name="keywords" class="title" /></li>
+                                <li> <span>Seo描述:</span> <textarea name="description" id="description" cols="84"
+                                        rows="4"></textarea></li>
+                            </ul>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <button type="submit" class="btn btn-primary">提交</button>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        new FroalaEditor('#content', {
+            height: 260,
+            language: 'zh_cn',
+            imageUploadURL: '/<%=adminPath%>/article/doUploadImage',
+        });
+    </script>
+    </body>
+
+    </html>

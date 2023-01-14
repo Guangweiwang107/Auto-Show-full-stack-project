@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"express_cms.manager"}],"uuid":"231d35e3c601484b9305c25a74e6fffc"}

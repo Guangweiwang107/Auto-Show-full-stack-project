@@ -1,0 +1,105 @@
+<%- include ("../public/page_header.html")%>
+
+    <script type="text/javascript" src="/admin/js/jqPaginator.js"></script>
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+
+            <form action="/<%=adminPath%>/article" method="GET" class="fl">
+                <input type="text" name="keywords" class="search" placeholder="请输入搜索关键词" value="<%=keywords%>" />
+
+                <input type="submit" class="btn btn-primary" value="搜索">
+            </form>
+
+
+            <a href="/<%=adminPath%>/article/add" class="btn btn-primary fr">增加内容</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr class="th">
+                    <th>名称</th>
+                    <th>分类</th>
+                    <th>图片</th>
+                    <th class="text-center">排序</th>
+                    <th class="text-center">推荐</th>
+                    <th class="text-center">状态</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                <%for(var i=0;i<list.length;i++){%>
+                    <tr>
+                        <td>
+                            <%=list[i].title%>
+                        </td>
+                        <td>
+                            <%if(list[i].cate){%>
+                                <%=list[i].cate[0].title%>
+                                    <%}%>
+                        </td>
+                        <td>
+                            <%if(list[i].article_img){%>
+                                <img src="/<%=list[i].article_img%>" width="80" />
+                                <%}%>
+
+                        </td>
+
+                        <td class="text-center">
+
+                            <span class="chSpanNum" data-id="<%=list[i]._id%>" data-model="Article" data-field="sort">
+                                <%=list[i].sort%>
+                            </span>
+
+                            </span>
+                        </td>
+                        <td align="center">
+                            <%if(list[i].is_best==1){%>
+                                <img src="/admin/images/yes.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                    data-model="Article" data-field="is_best" />
+
+                                <%}else{%>
+                                    <img src="/admin/images/no.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                        data-model="Article" data-field="is_best" />
+                                    <%}%>
+
+                        </td>
+                        <td align="center">
+                            <%if(list[i].status==1){%>
+                                <img src="/admin/images/yes.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                    data-model="Article" data-field="status" />
+
+                                <%}else{%>
+                                    <img src="/admin/images/no.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                        data-model="Article" data-field="status" />
+                                    <%}%>
+
+                        </td>
+
+                        <td class="text-center"><a href="/<%=adminPath%>/article/edit?id=<%=list[i]._id%>">修改</a>　　
+                            <a class="delete" href="/<%=adminPath%>/article/delete?id=<%=list[i]._id%>">删除</a>
+                        </td>
+                    </tr>
+                    <%}%>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="pagination" id="pagination">
+
+    </div>
+    <script>
+        $('#pagination').jqPaginator({
+            totalPages: <%=totalPages%>,
+            visiblePages: 5,
+            currentPage: <%=page %>,
+            onPageChange: function (num, type) {
+                if (type == "change") {
+                    location.href = "/<%=adminPath%>/article?page=" + num + "&keywords=<%=keywords%>";
+                }
+                console.log(type);
+                console.log('当前第' + num + '页')
+            }
+    })
+    </script>

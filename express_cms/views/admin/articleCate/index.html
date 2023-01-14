@@ -1,0 +1,91 @@
+<%- include ("../public/page_header.html")%>
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <a href="/<%=adminPath%>/articleCate/add" class="btn btn-primary">增加分类</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="th">
+                        <th>分类名称</th>
+                        <th>链接地址</th>
+                        <th class="text-center">排序</th>
+                        <th class="text-center">状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <%for(var i=0;i<list.length;i++){%>
+                        <tr>
+                            <td>
+                                <%=list[i].title%>
+                            </td>
+
+                            <td>
+                                <%=list[i].link%>
+                            </td>
+
+                            <td>
+                                <span class="chSpanNum" data-id="<%=list[i]._id%>" data-model="ArticleCate"
+                                    data-field="sort">
+                                    <%=list[i].sort%>
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <%if(list[i].status==1){%>
+                                    <img src="/admin/images/yes.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                        data-model="ArticleCate" data-field="status" />
+
+                                    <%}else{%>
+                                        <img src="/admin/images/no.gif" class="chStatus" data-id="<%=list[i]._id%>"
+                                            data-model="ArticleCate" data-field="status" />
+                                        <%}%>
+                            </td>
+                            <td class="text-center">
+                                <a href="/<%=adminPath%>/articleCate/edit?id=<%=list[i]._id%>">修改</a>　　
+                                <a class="delete" href="/<%=adminPath%>/articleCate/delete?id=<%=list[i]._id%>">删除</a>
+                            </td>
+                        </tr>
+
+
+                        <%for(var j=0;j<list[i].items.length;j++){%>
+                            <tr>
+                                <td>　　<%=list[i].items[j].title%>
+                                </td>
+
+                                <td><%=list[i].items[j].title%></td>
+
+                                <td>
+                                    <span class="chSpanNum" data-id="<%=list[i].items[j]._id%>" data-model="ArticleCate"
+                                        data-field="sort">
+                                        <%=list[i].items[j].sort%>
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <%if(list[i].status==1){%>
+                                        <img src="/admin/images/yes.gif" class="chStatus"
+                                            data-id="<%=list[i].items[j]._id%>" data-model="ArticleCate"
+                                            data-field="status" />
+
+                                        <%}else{%>
+                                            <img src="/admin/images/no.gif" class="chStatus"
+                                                data-id="<%=list[i].items[j]._id%>" data-model="ArticleCate"
+                                                data-field="status" />
+                                            <%}%>
+                                </td>
+                                <td class="text-center">
+                                    <a href="/<%=adminPath%>/articleCate/edit?id=<%=list[i].items[j]._id%>">修改</a>　　
+                                    <a class="delete"
+                                        href="/<%=adminPath%>/articleCate/delete?id=<%=list[i].items[j]._id%>">删除</a>
+                                </td>
+                            </tr>
+
+                            <%}%>
+                                <%}%>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
